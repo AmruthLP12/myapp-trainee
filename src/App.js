@@ -12,6 +12,7 @@ import MapFuction2 from './pages/MapFuction2';
 import MapFuction3 from './pages/MapFuction3';
 import Login from './pages/Login';
 import Search from './pages/Search';
+import Pre from './pages/Pre';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path='/mapthree' element={<MapFuction3 />} />
           <Route path='/login' element={<Login />} />
           <Route path='/search' element={<Search/>} />
+          <Route path='/pre' element={<Pre/>} />
         </Routes>
       </Router>
 

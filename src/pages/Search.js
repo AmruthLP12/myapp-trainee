@@ -16,9 +16,7 @@ const Search = () => {
   const filteredData = data.filter((item) => {
     const searchValue = search.toLowerCase();
     return (
-      item.name.toLowerCase().includes(searchValue) ||
-      item.id.toString().includes(searchValue) ||
-      item.age.toString().includes(searchValue)
+      item.name.toLowerCase().includes(searchValue) 
     );
   });
 
