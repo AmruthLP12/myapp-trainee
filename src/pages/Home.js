@@ -37,6 +37,12 @@ const Home = () => {
       <Link to='/SearchWithDateAndBar'>SearchWithDateAndBar</Link>
       <br />
       <Link to='/SearchWithDateRange'>SearchWithDateRange</Link>
+      <br />
+      <Link to='/FileUpload'>FileUpload</Link>
+      <br />
+      <Link to='/DraggableComponent'>DraggableComponent</Link>
+      <br />
+      <Link to='/DatePickerComponent'>DatePickerComponent</Link>
     </div>
   )
 }

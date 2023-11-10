@@ -20,6 +20,9 @@ import SearchWithDateRange from './pages/SearchWithDateRange';
 import FormikMulti from './pages/FormikMulti';
 import MultiStepFinalForm from './pages/MultiStepFinalForm';
 import MultiStepHookForm from './pages/MultiStepHookForm';
+import FileUpload from './pages/FileUpload';
+import DraggableComponent from './pages/DraggableComponent.js';
+import DatePickerComponent from './pages/DatePickerComponent.js';
 
 
 function App() {
@@ -47,6 +50,9 @@ function App() {
           <Route path='/FormikMulti' element={<FormikMulti/>} />
           <Route path='/MultiStepFinalForm' element={<MultiStepFinalForm/>} />
           <Route path='/MultiStepHookForm' element={<MultiStepHookForm/>} />
+          <Route path='/FileUpload' element={<FileUpload/>} />
+          <Route path='/DraggableComponent' element={<DraggableComponent/>} />
+          <Route path='/DatePickerComponent' element={<DatePickerComponent/>} />
         </Routes>
       </Router>
 
