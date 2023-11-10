@@ -9,7 +9,6 @@ const SearchWithDateAndBar = () => {
     { date: '2023-11-11', product: 'Product A', quantity: 75, price: 25.99 },
     { date: '2023-11-11', product: 'Product C', quantity: 30, price: 34.99 },
     { date: '2023-11-12', product: 'Product B', quantity: 120, price: 19.99 },
-    // Add more data as needed
   ]);
 
   const handleDateChange = (event) => {
