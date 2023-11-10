@@ -23,6 +23,20 @@ const Home = () => {
       <Link to='/counter'>Counter</Link>
       <br />
       <Link to='/search'>Search</Link>
+      <br />
+      <Link to='/MultiStepHookForm'>MultiStepHookForm</Link>
+      <br />
+      <Link to='/MultiStepFinalForm'>MultiStepFinalForm</Link>
+      <br />
+      <Link to='/FormikMulti'>FormikMulti</Link>
+      <br />
+      <Link to='/SearchWithDate'>SearchWithDate</Link>
+      <br />
+      <Link to='/SearchWithDateRangeAndBar'>SearchWithDateRangeAndBar</Link>
+      <br />
+      <Link to='/SearchWithDateAndBar'>SearchWithDateAndBar</Link>
+      <br />
+      <Link to='/SearchWithDateRange'>SearchWithDateRange</Link>
     </div>
   )
 }

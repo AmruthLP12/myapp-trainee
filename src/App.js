@@ -16,7 +16,11 @@ import Pre from './pages/Pre';
 import SearchWithDate from './pages/SearchWithDate';
 import SearchWithDateAndBar from './pages/SearchWithDateAndBar';
 import SearchWithDateRangeAndBar from './pages/SearchWithDateRangeAndBar';
-import SearchWithDateRange from './pages/SearchWithDateRange.js';
+import SearchWithDateRange from './pages/SearchWithDateRange';
+import FormikMulti from './pages/FormikMulti';
+import MultiStepFinalForm from './pages/MultiStepFinalForm';
+import MultiStepHookForm from './pages/MultiStepHookForm';
+
 
 function App() {
   return (
@@ -40,6 +44,9 @@ function App() {
           <Route path='/SearchWithDateAndBar' element={<SearchWithDateAndBar/>} />
           <Route path='/SearchWithDateRangeAndBar' element={<SearchWithDateRangeAndBar/>} />
           <Route path='/SearchWithDateRange' element={<SearchWithDateRange/>} />
+          <Route path='/FormikMulti' element={<FormikMulti/>} />
+          <Route path='/MultiStepFinalForm' element={<MultiStepFinalForm/>} />
+          <Route path='/MultiStepHookForm' element={<MultiStepHookForm/>} />
         </Routes>
       </Router>
 
