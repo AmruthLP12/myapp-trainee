@@ -13,6 +13,10 @@ import MapFuction3 from './pages/MapFuction3';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Pre from './pages/Pre';
+import SearchWithDate from './pages/SearchWithDate';
+import SearchWithDateAndBar from './pages/SearchWithDateAndBar';
+import SearchWithDateRangeAndBar from './pages/SearchWithDateRangeAndBar';
+import SearchWithDateRange from './pages/SearchWithDateRange.js';
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/search' element={<Search/>} />
           <Route path='/pre' element={<Pre/>} />
+          <Route path='/SearchWithDate' element={<SearchWithDate/>} />
+          <Route path='/SearchWithDateAndBar' element={<SearchWithDateAndBar/>} />
+          <Route path='/SearchWithDateRangeAndBar' element={<SearchWithDateRangeAndBar/>} />
+          <Route path='/SearchWithDateRange' element={<SearchWithDateRange/>} />
         </Routes>
       </Router>
 
