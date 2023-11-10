@@ -18,7 +18,20 @@ const SearchWithDate = () => {
   const handleReset = () => {
     setFilterDate('');
   };
-  const filteredData = data.filter((item) => item.date.includes(filterDate));
+  // const filteredData = data.filter((item) => item.date.includes(filterDate));
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+  
+
+  const filteredData = data.filter((item) =>
+    formatDate(item.date).includes(filterDate)
+  );
 
   return (
     <div>
