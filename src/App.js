@@ -23,6 +23,13 @@ import MultiStepHookForm from './pages/MultiStepHookForm';
 import FileUpload from './pages/FileUpload';
 import DraggableComponent from './pages/DraggableComponent.js';
 import DatePickerComponent from './pages/DatePickerComponent.js';
+import MySelectComponent from './pages/MySelectComponent.js';
+import MyTableComponent from './pages/MyTableComponent.js';
+import MyTypeaheadComponent from './pages/MyTypeaheadComponent.js';
+
+
+
+import PDFViewer from './pages/PDFViewer.js'; // not working 
 
 
 function App() {
@@ -53,6 +60,13 @@ function App() {
           <Route path='/FileUpload' element={<FileUpload/>} />
           <Route path='/DraggableComponent' element={<DraggableComponent/>} />
           <Route path='/DatePickerComponent' element={<DatePickerComponent/>} />
+          <Route path='/MySelectComponent' element={<MySelectComponent/>} />
+          <Route path='/MyTableComponent' element={<MyTableComponent/>} />
+          <Route path='/MyTypeaheadComponent' element={<MyTypeaheadComponent/>} />
+
+
+
+          <Route path='/PDFViewer' element={<PDFViewer/>} />
         </Routes>
       </Router>
 

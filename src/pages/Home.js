@@ -43,6 +43,15 @@ const Home = () => {
       <Link to='/DraggableComponent'>DraggableComponent</Link>
       <br />
       <Link to='/DatePickerComponent'>DatePickerComponent</Link>
+      <br />
+      <Link to='/MySelectComponent'>MySelectComponent</Link>
+      <br />
+      <Link to='/MyTableComponent'>MyTableComponent</Link>
+      <br />      <Link to='/MyTypeaheadComponent'>MyTypeaheadComponent</Link>
+
+
+
+      <br />      <Link to='/PDFViewer'>PDFViewer</Link>
     </div>
   )
 }

@@ -1,22 +1,53 @@
-import React, { useState } from 'react';
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+// import React, { useState } from 'react';
+// import {DayPicker} from 'react-day-picker';
+// import 'react-day-picker/dist/style.css';
 
-const DatePickerComponent = () => {
+// function DatePicker() {
+//   const [selectedDate, setSelectedDate] = useState(null);
+
+//   return (
+//     <div>
+//       <DayPicker
+//         selectedDays={selectedDate} 
+//         onDayClick={(day) => setSelectedDate(day)}
+//       />
+//       {selectedDate && (
+//         <p>You selected {selectedDate.toLocaleDateString()}</p>  
+//       )}
+//     </div>
+//   );
+// }
+
+// export default DatePicker;
+
+
+import React, { useState } from 'react';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+
+function DatePicker() {
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const formatDate = (date) => {
+    // Customize the date format as per your requirement
+    return date.toLocaleDateString('es-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
   };
 
   return (
     <div>
-      <DayPicker selected={selectedDate} onDayClick={handleDateChange} />
+      <DayPicker
+        selectedDays={selectedDate}
+        onDayClick={(day) => setSelectedDate(day)}
+      />
       {selectedDate && (
-        <p>Selected date: {selectedDate.toLocaleDateString()}</p>
+        <p>You selected {formatDate(selectedDate)}</p>
       )}
     </div>
   );
-};
+}
 
-export default DatePickerComponent;
+export default DatePicker;
