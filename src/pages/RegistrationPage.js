@@ -21,10 +21,24 @@ const RegistrationPage = () => {
     }
 
     // Validate email
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
+    //   newErrors.email = 'Valid email is required';
+    //   isValid = false;
+    // }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const allowedDomains = ['gmail.com', 'yahoo.com'];
+
     if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
       newErrors.email = 'Valid email is required';
       isValid = false;
+    } else {
+      const domain = formData.email.split('@')[1];
+      if (!allowedDomains.includes(domain)) {
+        newErrors.email = 'Only Gmail.com and Yahoo.com are allowed';
+        isValid = false;
+      }
     }
 
     // Validate password
