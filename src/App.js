@@ -27,6 +27,7 @@ import MySelectComponent from './pages/MySelectComponent.js';
 import MyTableComponent from './pages/MyTableComponent.js';
 import MyTypeaheadComponent from './pages/MyTypeaheadComponent.js';
 import ProductFilter from './pages/ProductFilter.js';
+import RegistrationPage from './pages/RegistrationPage.js';
 
 
 
@@ -65,6 +66,7 @@ function App() {
           <Route path='/MyTableComponent' element={<MyTableComponent/>} />
           <Route path='/MyTypeaheadComponent' element={<MyTypeaheadComponent/>} />
           <Route path='/ProductFilter' element={<ProductFilter/>} />
+          <Route path='/RegistrationPage' element={<RegistrationPage/>} />
 
 
 

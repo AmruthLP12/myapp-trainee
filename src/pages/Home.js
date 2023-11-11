@@ -49,6 +49,7 @@ const Home = () => {
       <Link to='/MyTableComponent'>MyTableComponent</Link>
       <br />      <Link to='/MyTypeaheadComponent'>MyTypeaheadComponent</Link>
       <br />      <Link to='/ProductFilter'>ProductFilter</Link>
+      <br />      <Link to='/RegistrationPage'>RegistrationPage</Link>
 
 
 
