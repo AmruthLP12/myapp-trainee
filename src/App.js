@@ -28,6 +28,7 @@ import MyTableComponent from './pages/MyTableComponent.js';
 import MyTypeaheadComponent from './pages/MyTypeaheadComponent.js';
 import ProductFilter from './pages/ProductFilter.js';
 import RegistrationPage from './pages/RegistrationPage.js';
+import ImageGalleryPage from './pages/ImageGalleryPage.js';
 
 
 
@@ -75,6 +76,7 @@ function App() {
           <Route path='/FormMERN' element={<FormMERN/>} />
           <Route path='/LoginMERN' element={<LoginMERN/>} />
           <Route path='/FormDataMERN' element={<FormDataMERN/>} />
+          <Route path='/ImageGalleryPage' element={<ImageGalleryPage/>} />
 
 
 
