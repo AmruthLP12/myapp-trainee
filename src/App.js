@@ -32,6 +32,10 @@ import RegistrationPage from './pages/RegistrationPage.js';
 
 
 import PDFViewer from './pages/PDFViewer.js'; // not working 
+import MailWIthHtml from './pages/MailWIthHtml.js';
+import FormMERN from './pages/FormMERN';
+import LoginMERN from './pages/LoginMERN.js';
+import FormDataMERN from './pages/FormDataMERN.js';
 
 
 function App() {
@@ -67,6 +71,10 @@ function App() {
           <Route path='/MyTypeaheadComponent' element={<MyTypeaheadComponent/>} />
           <Route path='/ProductFilter' element={<ProductFilter/>} />
           <Route path='/RegistrationPage' element={<RegistrationPage/>} />
+          <Route path='/MailWIthHtml' element={<MailWIthHtml/>} />
+          <Route path='/FormMERN' element={<FormMERN/>} />
+          <Route path='/LoginMERN' element={<LoginMERN/>} />
+          <Route path='/FormDataMERN' element={<FormDataMERN/>} />
 
 
 

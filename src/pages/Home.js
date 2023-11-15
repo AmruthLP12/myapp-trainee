@@ -50,6 +50,10 @@ const Home = () => {
       <br />      <Link to='/MyTypeaheadComponent'>MyTypeaheadComponent</Link>
       <br />      <Link to='/ProductFilter'>ProductFilter</Link>
       <br />      <Link to='/RegistrationPage'>RegistrationPage</Link>
+      <br />      <Link to='/MailWIthHtml'>MailWIthHtml</Link>
+      <br />      <Link to='/FormMERN'>FormMERN</Link>
+      <br />      <Link to='/LoginMERN'>LoginMERN</Link>
+      <br />      <Link to='/FormDataMERN'>FormDataMERN</Link>
 
 
 
