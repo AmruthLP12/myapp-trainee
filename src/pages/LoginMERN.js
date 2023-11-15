@@ -81,6 +81,7 @@ const LoginMERN = () => {
           />
         </div>
 
+{/* <input type="number" inputMode='numeric' pattern='[0-9]*' /> */}
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         <button type="submit">Login</button>
