@@ -29,6 +29,8 @@ import MyTypeaheadComponent from './pages/MyTypeaheadComponent.js';
 import ProductFilter from './pages/ProductFilter.js';
 import RegistrationPage from './pages/RegistrationPage.js';
 import ImageGalleryPage from './pages/ImageGalleryPage.js';
+import CheckBox from './pages/CheckBox.js';
+import PageNotFound from './pages/PageNotFound.js';
 
 
 
@@ -77,6 +79,8 @@ function App() {
           <Route path='/LoginMERN' element={<LoginMERN/>} />
           <Route path='/FormDataMERN' element={<FormDataMERN/>} />
           <Route path='/ImageGalleryPage' element={<ImageGalleryPage/>} />
+          <Route path='/CheckBox' element={<CheckBox/>} />
+          <Route path='/PageNotFound' element={<PageNotFound/>} />
 
 
 
