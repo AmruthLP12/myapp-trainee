@@ -1,0 +1,485 @@
+import React, { useEffect, useState } from 'react';
+
+function CheckboxGroup() {
+
+  const [checked, setChecked] = useState(false);
+
+  const subCheckboxes = [
+    {id: 1, value: 10},
+    {id: 2, value: 20},
+    {id: 3, value: 30}
+  ];
+
+const [subChecked, setSubChecked] = useState(
+  subCheckboxes.map(checkbox => ({...checkbox, checked}))  
+);
+
+const areAllSubChecked = subChecked.every(sc => sc.checked); 
+
+const isAnyUnchecked = subChecked.some(sc => !sc.checked);
+
+useEffect(() => {
+
+  if(areAllSubChecked) {
+    setChecked(true);
+  }
+
+  if(isAnyUnchecked) {
+    setChecked(false); 
+  }
+
+}, [subChecked, areAllSubChecked, isAnyUnchecked]);
+
+// in handleMainChange
+
+const handleMainChange = e => {
+
+  setChecked(e.target.checked);
+
+  setSubChecked(subChecked.map(sc => ({
+    ...sc,
+    checked: e.target.checked
+  })));
+
+};
+
+  const total = subCheckboxes
+    .filter(checkbox => checkbox.checked) 
+    .reduce((sum, checkbox) => sum + checkbox.value, 0);
+
+  return (
+    <div>
+    <input 
+      type="checkbox"
+      checked={checked} 
+      onChange={handleMainChange}
+    />
+
+    {subChecked.map(checkbox => (
+      <label key={checkbox.id}>
+        <input
+          type="checkbox"
+          checked={checkbox.checked}
+          onChange={e => {
+            setSubChecked(prev => 
+              prev.map(sc => 
+                sc.id === checkbox.id ? {...sc, checked: e.target.checked} : sc
+              )
+            );
+          }} 
+        />
+        {checkbox.value}
+      </label>
+    ))}
+    
+
+      Total: {total}
+    </div>
+  );
+
+}
+
+export default CheckboxGroup
+
+
+// total included
+import React, { useState, useEffect } from 'react';
+
+function CheckboxGroup() {
+
+  const [checked, setChecked] = useState(false);
+  const [subChecked, setSubChecked] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  const subCheckboxes = [
+    {id: 1, value: 10},  
+    {id: 2, value: 20},
+    {id: 3, value: 30}
+  ];
+
+  useEffect(() => {
+    setSubChecked(subCheckboxes.map(sc => ({...sc, checked})));
+  }, []);
+
+  useEffect(() => {
+    calculateTotal();
+
+    const areAllChecked = subChecked.every(sc => sc.checked);
+    if (areAllChecked) {
+      setChecked(true);
+    }
+
+    const anyUnchecked = subChecked.some(sc => !sc.checked); 
+    if (anyUnchecked) {
+      setChecked(false);
+    }
+
+  }, [subChecked]);
+
+  const calculateTotal = () => {
+    const total = subChecked
+      .filter(sc => sc.checked) 
+      .reduce((sum, sc) => sum + sc.value, 0);
+    
+    setTotal(total);
+  }
+
+  const handleMainChange = (e) => {
+    setChecked(e.target.checked);
+
+    setSubChecked(subChecked.map(sc => ({
+      ...sc,
+      checked: e.target.checked, 
+    })));
+  };
+
+  return (
+    <div>
+      <input 
+        type="checkbox"  
+        checked={checked}
+        onChange={handleMainChange} 
+      />
+      
+      {subChecked.map(sc => (
+        <label key={sc.id}>
+          <input 
+            type="checkbox"
+            checked={sc.checked}
+            onChange={(e) => {
+              setSubChecked(prev => prev.map(s => 
+                s.id === sc.id ? {...s, checked: e.target.checked} : s
+              ));
+            }}
+          />
+          {sc.value} 
+        </label>
+      ))}
+
+      Total: {total}
+    </div>
+  );
+
+}export default CheckboxGroup;
+
+
+// with single check box
+import React, { useState, useEffect } from "react";
+
+function CheckboxGroup() {
+  const [checked, setChecked] = useState(false);
+  const [subChecked, setSubChecked] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  const [separateChecked, setSeparateChecked] = useState(false);
+  const separateValue = 50;
+
+  const subCheckboxes = [
+    { id: 1, value: 10 },
+    { id: 2, value: 20 },
+    { id: 3, value: 30 },
+  ];
+
+  useEffect(() => {
+    setSubChecked(subCheckboxes.map((sc) => ({ ...sc, checked })));
+  }, []);
+
+  useEffect(() => {
+    calculateTotal();
+
+    const allChecked = subChecked.every((sc) => sc.checked);
+    if (allChecked) {
+      setChecked(true);
+    }
+
+    const anyUnchecked = subChecked.some((sc) => !sc.checked);
+    if (anyUnchecked) {
+      setChecked(false);
+    }
+  }, [subChecked]);
+
+  useEffect(() => {
+    if (separateChecked) {
+      setTotal(total + separateValue);
+    } else {
+      setTotal(total - separateValue);
+    }
+  }, [separateChecked]);
+
+  const calculateTotal = () => {
+    const total = subChecked
+      .filter((sc) => sc.checked)
+      .reduce((sum, sc) => sum + sc.value, 0);
+
+    setTotal(total);
+  };
+
+  const handleMainCheck = (e) => {
+    setChecked(e.target.checked);
+    setSubChecked(
+      subChecked.map((sc) => ({ ...sc, checked: e.target.checked }))
+    );
+  };
+
+  return (
+    <div>
+      <label>Main Checkbox<input type="checkbox" checked={checked} onChange={handleMainCheck} /></label>
+      {subChecked.map((sc) => (
+        <label key={sc.id}>
+          <input
+            type="checkbox"
+            checked={sc.checked}
+            onChange={(e) => {
+              setSubChecked((prev) =>
+                prev.map((s) =>
+                  s.id === sc.id ? { ...s, checked: e.target.checked } : s
+                )
+              );
+            }}
+          />
+         {sc.id}: {sc.value}
+        </label>
+      ))}
+      <label htmlFor="input">Sep</label>
+      <input
+        type="checkbox"
+        checked={separateChecked}
+        onChange={(e) => setSeparateChecked(e.target.checked)}
+      />
+      Total: {total}
+    </div>
+  );
+}
+
+export default CheckboxGroup;
+
+
+//with div 
+import React, { useState, useEffect } from "react";
+
+function CheckboxGroup() {
+  const [checked, setChecked] = useState(false);
+  const [subChecked, setSubChecked] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  const [separateChecked, setSeparateChecked] = useState(false);
+  const separateValue = 50;
+
+  const subCheckboxes = [
+    { id: 1, name: "checkbox1", value: 10 },
+    { id: 2, name: "checkbox2", value: 20 },
+    { id: 3, name: "checkbox3", value: 30 },
+  ];
+
+  useEffect(() => {
+    setSubChecked(subCheckboxes.map((sc) => ({ ...sc, checked })));
+  }, []);
+
+  useEffect(() => {
+    calculateTotal();
+
+    const allChecked = subChecked.every((sc) => sc.checked);
+    if (allChecked) {
+      setChecked(true);
+    }
+
+    const anyUnchecked = subChecked.some((sc) => !sc.checked);
+    if (anyUnchecked) {
+      setChecked(false);
+    }
+  }, [subChecked]);
+
+  useEffect(() => {
+    if (separateChecked) {
+      setTotal(total + separateValue);
+    } else {
+      setTotal(total - separateValue);
+    }
+  }, [separateChecked]);
+
+  const calculateTotal = () => {
+    const total = subChecked
+      .filter((sc) => sc.checked)
+      .reduce((sum, sc) => sum + sc.value, 0);
+
+    setTotal(total);
+  };
+
+  const handleMainCheck = (e) => {
+    setChecked(e.target.checked);
+    setSubChecked(
+      subChecked.map((sc) => ({ ...sc, checked: e.target.checked }))
+    );
+  };
+
+  return (
+    <div>
+      <div>
+        <input 
+          id="mainCheckbox"
+          type="checkbox"
+          checked={checked}
+          onChange={handleMainCheck}  
+        />
+      <label htmlFor="mainCheckbox">Main Checkbox</label>
+      </div>
+      {subChecked.map((sc) => (
+        <div key={sc.id}>
+          <input
+            type="checkbox"
+            checked={sc.checked}
+            onChange={(e) => {
+              setSubChecked((prev) =>
+                prev.map((s) =>
+                  s.id === sc.id ? { ...s, checked: e.target.checked } : s
+                )
+              );
+            }}
+          />
+         {sc.name}: {sc.value}
+        </div>
+      ))}
+      <br />
+      <div>
+        <input
+          type="checkbox"
+          checked={separateChecked}
+          onChange={(e) => setSeparateChecked(e.target.checked)}
+        /> 
+        <label htmlFor="input">Sep</label>
+       : {separateValue}
+      </div>
+     <br />
+      Total: {total}
+    </div>
+  );
+}
+
+export default CheckboxGroup;
+
+
+// full working
+
+import React, { useState, useEffect } from "react";
+
+function CheckboxGroup() {
+  const [checked, setChecked] = useState(false);
+  const [subChecked, setSubChecked] = useState([]);
+  const [total, setTotal] = useState(0);
+  
+
+  const [separateChecked, setSeparateChecked] = useState(false);
+  const separateValue = 50;
+
+  const subCheckboxes = [
+    { id: 1, name: "checkbox1", value: 10 },
+    { id: 2, name: "checkbox2", value: 20 },
+    { id: 3, name: "checkbox3", value: 30 },
+  ];
+
+  useEffect(() => {
+    if (separateChecked) {
+      setTotal(total + separateValue);
+    } else {
+      setTotal(total - separateValue);
+    }
+  }, [separateChecked]);
+
+  useEffect(() => {
+    setSubChecked(subCheckboxes.map((sc) => ({ ...sc, checked })));
+  }, []);
+
+  useEffect(() => {
+    calculateTotal();
+
+    const allChecked = subChecked.every((sc) => sc.checked);
+    if (allChecked) {
+      setChecked(true);
+    }
+
+    const anyUnchecked = subChecked.some((sc) => !sc.checked);
+    if (anyUnchecked) {
+      setChecked(false);
+    }
+  }, [subChecked]);
+
+ 
+
+ // Calculate total including separate checkbox value
+const calculateTotal = () => {
+  let total = 0;
+
+  subChecked.forEach(sc => {
+    if(sc.checked) {
+      total += sc.value; 
+    }
+  });
+
+  if(separateChecked) {
+    total += separateValue;
+  }
+
+  setTotal(total);
+}
+
+// Update total when separate checkbox changes
+useEffect(() => {
+  calculateTotal(); 
+}, [separateChecked]);
+
+// Update total when sub checkboxes change
+useEffect(() => {
+  calculateTotal();
+}, [subChecked]);
+
+  const handleMainCheck = (e) => {
+    setChecked(e.target.checked);
+    setSubChecked(
+      subChecked.map((sc) => ({ ...sc, checked: e.target.checked }))
+    );
+  };
+
+  return (
+    <div>
+      <div>
+        <input 
+          id="mainCheckbox"
+          type="checkbox"
+          checked={checked}
+          onChange={handleMainCheck}  
+        />
+      <label htmlFor="mainCheckbox">Main Checkbox</label>
+      </div>
+      {subChecked.map((sc) => (
+        <div key={sc.id}>
+          <input
+            type="checkbox"
+            checked={sc.checked}
+            onChange={(e) => {
+              setSubChecked((prev) =>
+                prev.map((s) =>
+                  s.id === sc.id ? { ...s, checked: e.target.checked } : s
+                )
+              );
+            }}
+          />
+         {sc.name}: {sc.value}
+        </div>
+      ))}
+      <br />
+      <div>
+        <input
+          type="checkbox"
+          checked={separateChecked}
+          onChange={(e) => setSeparateChecked(e.target.checked)}
+        /> 
+        <label htmlFor="input">Sep</label>
+       : {separateValue}
+      </div>
+     <br />
+      Total: {total}
+    </div>
+  );
+}
+
+export default CheckboxGroup;

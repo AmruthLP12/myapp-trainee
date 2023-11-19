@@ -34,8 +34,12 @@ const FormMERN = () => {
       navigate('/login');
     } catch (err) {
       console.error('Error:', err.response.data); // Log the error response details
+  
+      // Show an alert with the error message
+      window.alert(`Error: ${err.response.data.error}`);
     }
   };
+  
   
 
   return (

@@ -30,6 +30,9 @@ import ProductFilter from './pages/ProductFilter.js';
 import RegistrationPage from './pages/RegistrationPage.js';
 import ImageGalleryPage from './pages/ImageGalleryPage.js';
 import CheckBox from './pages/CheckBox.js';
+import DisplayCheckedData from './pages/DisplayCheckedData.js';
+
+
 import PageNotFound from './pages/PageNotFound.js';
 
 
@@ -80,7 +83,8 @@ function App() {
           <Route path='/FormDataMERN' element={<FormDataMERN/>} />
           <Route path='/ImageGalleryPage' element={<ImageGalleryPage/>} />
           <Route path='/CheckBox' element={<CheckBox/>} />
-          <Route path='/PageNotFound' element={<PageNotFound/>} />
+          <Route path='/DisplayCheckedData' element={<DisplayCheckedData/>} />
+          <Route path='*' element={<PageNotFound/>} />
 
 
 

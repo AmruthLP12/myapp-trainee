@@ -1,0 +1,29 @@
+const mongoose = require("mongoose");
+
+const checkboxDataSchema = new mongoose.Schema({
+  checkboxes: [
+    {
+      name: String,
+      checked: Boolean,
+      subs: [
+        {
+          name: String,
+          value: mongoose.Schema.Types.Mixed,
+        },
+      ],
+    },
+  ],
+  separateCheckbox: {
+    name: String,
+    checked: Boolean,
+  },
+  separateCheckbox2: {
+    name: String,
+    checked: Boolean,
+  },
+  total: Number,
+});
+
+const CheckboxData = mongoose.model("CheckboxData", checkboxDataSchema);
+
+module.exports = CheckboxData;

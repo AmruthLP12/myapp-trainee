@@ -53,6 +53,15 @@ app.use(express.json());
 // User routes
 app.post('/users', async (req, res) => {
   try {
+    // Check if the email already exists
+    const existingUser = await User.findOne({ email: req.body.email });
+
+    if (existingUser) {
+      // If the email is already present, send an alert and return an error response
+      return res.status(400).json({ error: 'User with this email already exists' });
+    }
+
+    // If the email is not present, create the new user
     const user = await User.create(req.body);
     res.status(201).json(user); // Use status 201 for resource creation
   } catch (err) {
