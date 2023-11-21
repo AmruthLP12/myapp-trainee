@@ -1,0 +1,73 @@
+.checkbox-container {
+  display: flex;
+  font-size: 14px;
+}
+
+.checkbox-set {
+  width: 35%;
+  margin-left: 5%;
+}
+
+.checkbox-set1 {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.subbox {
+  padding: 20px;
+}
+
+.subbox div {
+  margin-top: 3%;
+}
+
+.set1 label,
+.set2 label,
+.set3 label,
+.set4 label,
+.set5 label,
+.set6 label,
+.set7 label,
+.set8 label,
+.set9 label,
+.set10 label,
+.set11 label,
+.set12 label,
+.set13 label,
+.set14 label,
+.set15 label,
+.set16 label,
+.set17 label,
+.set18 label,
+.set19 label,
+.set20 label,
+.set21 label,
+.set22 label,
+.set23 label,
+.set24 label,
+.set25 label,
+.set26 label,
+.set27 label,
+.set28 label {
+  font-size: 14px;
+}
+
+.check-submit button {
+  height: 8vh;
+  width: 6vw;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  background-color: #1640D6;
+  color: #fff;
+  margin-left: 90%;
+  margin-bottom: 1%;
+}
+
+.check-total{
+    font-weight: 600;
+    font-size: 20px;
+}

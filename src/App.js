@@ -29,8 +29,9 @@ import MyTypeaheadComponent from './pages/MyTypeaheadComponent.js';
 import ProductFilter from './pages/ProductFilter.js';
 import RegistrationPage from './pages/RegistrationPage.js';
 import ImageGalleryPage from './pages/ImageGalleryPage.js';
-import CheckBox from './pages/CheckBox.js';
+import CheckBox from './pages/CheckBox.jsx';
 import DisplayCheckedData from './pages/DisplayCheckedData.js';
+import PatientBill from './pages/PatientBill.js';
 
 
 import PageNotFound from './pages/PageNotFound.js';
@@ -84,6 +85,7 @@ function App() {
           <Route path='/ImageGalleryPage' element={<ImageGalleryPage/>} />
           <Route path='/CheckBox' element={<CheckBox/>} />
           <Route path='/DisplayCheckedData' element={<DisplayCheckedData/>} />
+          <Route path='/PatientBill' element={<PatientBill/>} />
           <Route path='*' element={<PageNotFound/>} />
 
 

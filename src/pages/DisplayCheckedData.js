@@ -10,6 +10,7 @@ function DisplayCheckedData() {
         if (response.ok) {
           const data = await response.json();
           setCheckedData(data);
+          console.log(data)
         } else {
           console.error("Failed to fetch data from server");
         }
@@ -20,6 +21,23 @@ function DisplayCheckedData() {
 
     fetchData();
   }, []);
+
+  const renderNestedArray = (nestedArray) => {
+    if (!nestedArray || nestedArray.length === 0) {
+      return null;
+    }
+
+    return (
+      <ul>
+        {nestedArray.map((nestedItem, nestedIndex) => (
+          <li key={nestedIndex}>
+            {nestedItem.name}: {nestedItem.value}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
 
   return (
     <div>
@@ -34,15 +52,7 @@ function DisplayCheckedData() {
                 <li key={subIndex}>
                   {sub.name}: {sub.value}
                   {/* Display the nested array inside each 'item.subs' item */}
-                  {sub.nestedArray && sub.nestedArray.length > 0 && (
-                    <ul>
-                      {sub.nestedArray.map((nestedItem, nestedIndex) => (
-                        <li key={nestedIndex}>
-                          {nestedItem.name}: {nestedItem.value}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  {renderNestedArray(sub.nestedArray)}
                 </li>
               ))}
             </ul>
@@ -54,6 +64,8 @@ function DisplayCheckedData() {
                 {item.checked.map((checkedItem, checkedIndex) => (
                   <li key={checkedIndex}>
                     {checkedItem.name}: {checkedItem.value}
+                    {/* Display the nested array inside each 'checkedItem.subs' item */}
+                    {renderNestedArray(checkedItem.subs)}
                   </li>
                 ))}
               </ul>
@@ -64,5 +76,4 @@ function DisplayCheckedData() {
     </div>
   );
 }
-
 export default DisplayCheckedData;
