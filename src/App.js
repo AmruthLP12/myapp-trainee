@@ -43,6 +43,7 @@ import MailWIthHtml from './pages/MailWIthHtml.js';
 import FormMERN from './pages/FormMERN';
 import LoginMERN from './pages/LoginMERN.js';
 import FormDataMERN from './pages/FormDataMERN.js';
+import EditUser from './pages/EditUser.js';
 
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
           <Route path='/FormMERN' element={<FormMERN/>} />
           <Route path='/LoginMERN' element={<LoginMERN/>} />
           <Route path='/FormDataMERN' element={<FormDataMERN/>} />
+          <Route path="/edit-user/:id" element={<EditUser/>} />
           <Route path='/ImageGalleryPage' element={<ImageGalleryPage/>} />
           <Route path='/CheckBox' element={<CheckBox/>} />
           <Route path='/DisplayCheckedData' element={<DisplayCheckedData/>} />

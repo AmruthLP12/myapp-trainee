@@ -96,6 +96,32 @@ app.post('/login', async (req, res) => {
   res.json({ success: true });
 });
 
+app.put('/users/:id', async (req, res) => {
+  const userId = req.params.id;
+  const { firstName, lastName, email, gender } = req.body;
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(userId, { firstName, lastName, email, gender }, { new: true });
+    res.json(updatedUser);
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.delete('/users/:id', async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    await User.findByIdAndDelete(userId);
+    res.json({ message: 'User deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 app.listen(5000, () => {
   console.log('Server is listening on port 5000');
 });
