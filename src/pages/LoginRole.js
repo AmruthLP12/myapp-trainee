@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const LoginRole = () => {
   const navigate = useNavigate();
-  const [role, setRole] = useState(null);
+  const [, setRole] = useState(null);
 
   const [formData, setFormData] = useState({
     email: '',
