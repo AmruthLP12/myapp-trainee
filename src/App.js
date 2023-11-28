@@ -44,6 +44,8 @@ import FormMERN from './pages/FormMERN';
 import LoginMERN from './pages/LoginMERN.js';
 import FormDataMERN from './pages/FormDataMERN.js';
 import EditUser from './pages/EditUser.js';
+import RegisterRole from './pages/RegisterRole.js';
+import LoginRole from './pages/LoginRole.js';
 
 
 function App() {
@@ -88,6 +90,8 @@ function App() {
           <Route path='/CheckBox' element={<CheckBox/>} />
           <Route path='/DisplayCheckedData' element={<DisplayCheckedData/>} />
           <Route path='/PatientBill' element={<PatientBill/>} />
+          <Route path='/RegisterRole' element={<RegisterRole/>} />
+          <Route path='/LoginRole' element={<LoginRole/>} />
           <Route path='*' element={<PageNotFound/>} />
 
 
