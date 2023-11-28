@@ -1,10 +1,9 @@
-// app.js
-
+// Import necessary packages
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// User model
+// Define the User model schema
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -30,6 +29,7 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+// Create the User model from the schema
 const User = mongoose.model('User', UserSchema);
 
 // Connect to MongoDB
@@ -38,6 +38,7 @@ mongoose.connect('mongodb://localhost:27017/users', {
   useUnifiedTopology: true,
 });
 
+// Handle MongoDB connection events
 mongoose.connection.on('error', (err) => {
   console.error('MongoDB connection error:', err);
 });
@@ -46,11 +47,16 @@ mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+// Initialize the Express application
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-// User routes
+// Middleware setup
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json()); // Parse JSON request bodies
+
+// Define routes for the application
+
+// Route for creating a new user
 app.post('/users', async (req, res) => {
   try {
     // Check if the email already exists
@@ -69,7 +75,7 @@ app.post('/users', async (req, res) => {
   }
 });
 
-// Fetch all users route
+// Route for fetching all users
 app.get('/users', async (req, res) => {
   try {
     const users = await User.find();
@@ -79,11 +85,11 @@ app.get('/users', async (req, res) => {
   }
 });
 
-// Login route
+// Route for user login
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email});
 
   if (!user) {
     return res.status(401).json({ message: 'Invalid email' });
@@ -96,12 +102,13 @@ app.post('/login', async (req, res) => {
   res.json({ success: true });
 });
 
+// Route for updating user information
 app.put('/users/:id', async (req, res) => {
-  const userId = req.params.id;
-  const { firstName, lastName, email, gender } = req.body;
+  const { id } = req.params;
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(userId, { firstName, lastName, email, gender }, { new: true });
+    // Use the spread operator to extract all fields from req.body
+    const updatedUser = await User.findByIdAndUpdate(id, { ...req.body }, { new: true });
     res.json(updatedUser);
   } catch (error) {
     console.error('Error updating user:', error);
@@ -109,6 +116,7 @@ app.put('/users/:id', async (req, res) => {
   }
 });
 
+// Route for deleting a user
 app.delete('/users/:id', async (req, res) => {
   const userId = req.params.id;
 
@@ -121,7 +129,7 @@ app.delete('/users/:id', async (req, res) => {
   }
 });
 
-
+// Start the server and listen on port 5000
 app.listen(5000, () => {
   console.log('Server is listening on port 5000');
 });
