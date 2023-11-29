@@ -110,7 +110,7 @@ app.put('/users/:id', async (req, res) => {
 
   try {
     // Use the spread operator to extract all fields from req.body
-    const updatedUser = await User.findByIdAndUpdate(id, { ...req.body }, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(id, { ...req.body }, { new: false });
     res.json(updatedUser);
   } catch (error) {
     console.error('Error updating user:', error);
