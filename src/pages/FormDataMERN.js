@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const FormDataMERN = () => {
   // State variables to manage users, edit mode, edited user, modals, and user deletion
   const [users, setUsers] = useState([]);
   const [editMode, setEditMode] = useState(null);
   const [editedUser, setEditedUser] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    gender: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    gender: "",
   });
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -19,10 +19,10 @@ const FormDataMERN = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/users');
+        const response = await axios.get("http://localhost:5001/users");
         setUsers(response.data);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
 
@@ -56,20 +56,20 @@ const FormDataMERN = () => {
   const handleSaveClick = async () => {
     try {
       // Send a PUT request to update the user data on the server
-      await axios.put(`http://localhost:5000/users/${editMode}`, editedUser);
+      await axios.put(`http://localhost:5001/users/${editMode}`, editedUser);
       // Fetch the updated user list after editing
-      const response = await axios.get('http://localhost:5000/users');
+      const response = await axios.get("http://localhost:5001/users");
       setUsers(response.data);
       setEditMode(null);
       setEditedUser({
-        firstName: '',
-        lastName: '',
-        email: '',
-        gender: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        gender: "",
       });
       setIsEditModalOpen(false);
     } catch (error) {
-      console.error('Error updating user data:', error);
+      console.error("Error updating user data:", error);
     }
   };
 
@@ -77,13 +77,13 @@ const FormDataMERN = () => {
   const handleDeleteConfirm = async () => {
     try {
       // Send a DELETE request to delete the user from the server
-      await axios.delete(`http://localhost:5000/users/${userToDelete._id}`);
+      await axios.delete(`http://localhost:5001/users/${userToDelete._id}`);
       // Fetch the updated user list after deleting
-      const response = await axios.get('http://localhost:5000/users');
+      const response = await axios.get("http://localhost:5001/users");
       setUsers(response.data);
       setIsDeleteModalOpen(false);
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
     }
   };
 
@@ -109,17 +109,56 @@ const FormDataMERN = () => {
           <div className="modal">
             <h2>Edit User</h2>
             <p>
-              First Name: <input type="text" name="firstName" value={editedUser.firstName} onChange={handleInputChange} />
+              First Name:{" "}
+              <input
+                type="text"
+                name="firstName"
+                value={editedUser.firstName}
+                onChange={handleInputChange}
+              />
             </p>
             <p>
-              Last Name: <input type="text" name="lastName" value={editedUser.lastName} onChange={handleInputChange} />
+              Last Name:{" "}
+              <input
+                type="text"
+                name="lastName"
+                value={editedUser.lastName}
+                onChange={handleInputChange}
+              />
             </p>
             <p>
-              Email: <input type="text" name="email" value={editedUser.email} onChange={handleInputChange} />
+              Email:{" "}
+              <input
+                type="text"
+                name="email"
+                value={editedUser.email}
+                onChange={handleInputChange}
+              />
             </p>
             <p>
-              Gender: <input type="text" name="gender" value={editedUser.gender} onChange={handleInputChange} />
+              Gender:
+              <label>
+                <input
+                  type="checkbox"
+                  name="gender"
+                  value="male"
+                  checked={editedUser.gender === "male"}
+                  onChange={handleInputChange}
+                />
+                Male
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="gender"
+                  value="female"
+                  checked={editedUser.gender === "female"}
+                  onChange={handleInputChange}
+                />
+                Female
+              </label>
             </p>
+
             <button onClick={handleSaveClick}>Save</button>
             <button onClick={() => setIsEditModalOpen(false)}>Close</button>
           </div>

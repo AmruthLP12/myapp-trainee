@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const PORT = 5001
+
 // Define the User model schema
 const UserSchema = new mongoose.Schema({
   firstName: {
@@ -130,6 +132,6 @@ app.delete('/users/:id', async (req, res) => {
 });
 
 // Start the server and listen on port 5000
-app.listen(5000, () => {
-  console.log('Server is listening on port 5000');
+app.listen(PORT, () => {
+  console.log(`'Server is listening on port ${PORT}'`);
 });
