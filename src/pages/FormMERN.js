@@ -28,10 +28,10 @@ const FormMERN = () => {
     try {
       console.log('Form Data:', formData); // Log the form data
       // Send formData to backend
-      await axios.post('http://localhost:5000/users', formData);
+      await axios.post('http://localhost:5001/users', formData);
   
       // Redirect on success
-      navigate('/login');
+      navigate('/LoginMERN');
     } catch (err) {
       console.error('Error:', err.response.data); // Log the error response details
   
