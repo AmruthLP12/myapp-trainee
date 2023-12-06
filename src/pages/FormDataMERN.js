@@ -14,6 +14,10 @@ const FormDataMERN = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
+  // Add a state variable to track the profile picture file
+  const [profilePictureFile, setProfilePictureFile] = useState(null);
+  const [profilePicturePreview, setProfilePicturePreview] = useState(null);
+  
 
   // Effect to fetch user data from the server on component mount
   useEffect(() => {
@@ -30,6 +34,7 @@ const FormDataMERN = () => {
   }, []); // Run this effect only once on component mount
 
   // Handle click to edit a user
+  // Handle click to edit a user
   const handleEditClick = (user) => {
     setEditMode(user._id);
     setEditedUser({
@@ -39,7 +44,13 @@ const FormDataMERN = () => {
       gender: user.gender,
     });
     setIsEditModalOpen(true);
+    
+    // Set the profile picture file to the current user's profile picture
+    if (user.profilePicture) {
+      setProfilePictureFile(user.profilePicture); // You might need to fetch the profile picture separately and set it here
+    }
   };
+
 
   // Handle click to delete a user
   const handleDeleteClick = (user) => {
@@ -48,18 +59,53 @@ const FormDataMERN = () => {
   };
 
   // Handle input change in the edit modal
-  const handleInputChange = (e) => {
+   const handleInputChange = (e) => {
     setEditedUser({ ...editedUser, [e.target.name]: e.target.value });
   };
 
+
   // Handle click to save edits in the edit modal
+  // const handleSaveClick = async () => {
+  //   try {
+  //     // Send a PUT request to update the user data on the server
+  //     await axios.put(`http://localhost:5001/users/${editMode}`, editedUser);
+  //     // Fetch the updated user list after editing
+  //     // const response = await axios.get("http://localhost:5001/users");
+  //     // setUsers(response.data);
+
+  //     setEditMode(null);
+  //     setEditedUser({
+  //       firstName: "",
+  //       lastName: "",
+  //       email: "",
+  //       gender: "",
+  //     });
+  //     setIsEditModalOpen(false);
+  //   } catch (error) {
+  //     console.error("Error updating user data:", error);
+  //   }
+  // };
   const handleSaveClick = async () => {
     try {
-      // Send a PUT request to update the user data on the server
-      await axios.put(`http://localhost:5001/users/${editMode}`, editedUser);
+      const formData = new FormData();
+      formData.append("profilePicture", profilePictureFile);
+      // Add other fields to the form data
+      formData.append("firstName", editedUser.firstName);
+      formData.append("lastName", editedUser.lastName);
+      formData.append("email", editedUser.email);
+      formData.append("gender", editedUser.gender);
+
+      // Send a PUT request with the form data
+      await axios.put(`http://localhost:5001/users/${editMode}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       // Fetch the updated user list after editing
       const response = await axios.get("http://localhost:5001/users");
       setUsers(response.data);
+
       setEditMode(null);
       setEditedUser({
         firstName: "",
@@ -67,10 +113,20 @@ const FormDataMERN = () => {
         email: "",
         gender: "",
       });
+      setProfilePictureFile(null); // Reset profile picture file
       setIsEditModalOpen(false);
     } catch (error) {
       console.error("Error updating user data:", error);
     }
+  };
+
+  // Handle profile picture change in the edit modal
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    setProfilePictureFile(file);
+    // Optionally, create a URL for the file to display a preview
+    const imageUrl = URL.createObjectURL(file);
+    setProfilePicturePreview(imageUrl);
   };
 
   // Handle click to confirm user deletion
@@ -91,12 +147,20 @@ const FormDataMERN = () => {
     <div>
       <h2>User List</h2>
       <ul>
+        {/* // Inside the map function where you render user data */}
         {users.map((user) => (
           <li key={user._id}>
             <p>First Name: {user.firstName}</p>
             <p>Last Name: {user.lastName}</p>
             <p>Email: {user.email}</p>
             <p>Gender: {user.gender}</p>
+            {user.profilePicture && (
+              <img
+                src={`http://localhost:5001/${user.profilePicture}`}
+                alt={`${user.firstName}'s Profile`}
+                style={{ width: "100px", height: "100px" }}
+              />
+            )}
             <button onClick={() => handleEditClick(user)}>Edit</button>
             <button onClick={() => handleDeleteClick(user)}>Delete</button>
           </li>
@@ -157,6 +221,15 @@ const FormDataMERN = () => {
                 />
                 Female
               </label>
+            </p>
+            <p>
+              Profile Picture:{" "}
+              <input
+                type="file"
+                name="profilePicture"
+                accept="image/*"
+                onChange={(e) => handleProfilePictureChange(e)}
+              />
             </p>
 
             <button onClick={handleSaveClick}>Save</button>
