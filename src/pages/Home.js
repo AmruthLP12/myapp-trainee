@@ -55,6 +55,11 @@ const Home = () => {
       <br />      <Link to='/LoginMERN'>LoginMERN</Link>
       <br />      <Link to='/FormDataMERN'>FormDataMERN</Link>
       <br />      <Link to='/ImageGalleryPage'>ImageGalleryPage</Link>
+      <br />      <Link to='/DigitalClock1'>DigitalClock1</Link>
+      <br />      <Link to='/DigitalClock'>DigitalClock</Link>
+      <br />      <Link to='/SimpleCarousel'>SimpleCarousel</Link>
+      <br />      <Link to='/ProfileForm'>ProfileForm</Link>
+      <br />      <Link to='/MultipleImagesPage'>MultipleImagesPage</Link>
 
 
 <br /><br />

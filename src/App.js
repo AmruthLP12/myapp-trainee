@@ -32,6 +32,11 @@ import ImageGalleryPage from './pages/ImageGalleryPage.js';
 import CheckBox from './pages/CheckBox.jsx';
 import DisplayCheckedData from './pages/DisplayCheckedData.js';
 import PatientBill from './pages/PatientBill.js';
+import DigitalClock1 from './pages/DigitalClock1.js';
+import DigitalClock from './pages/DigitalClock.js';
+import SimpleCarousel from './pages/SimpleCarousel.js';
+import ProfileForm from './pages/ProfileForm.js';
+import MultipleImagesPage from './pages/MultipleImagesPage.js';
 
 
 import PageNotFound from './pages/PageNotFound.js';
@@ -92,6 +97,11 @@ function App() {
           <Route path='/PatientBill' element={<PatientBill/>} />
           <Route path='/RegisterRole' element={<RegisterRole/>} />
           <Route path='/LoginRole' element={<LoginRole/>} />
+          <Route path='/DigitalClock1' element={<DigitalClock1/>} />
+          <Route path='/DigitalClock' element={<DigitalClock/>} />
+          <Route path='/SimpleCarousel' element={<SimpleCarousel/>} />
+          <Route path='/ProfileForm' element={<ProfileForm/>} />
+          <Route path='/MultipleImagesPage' element={<MultipleImagesPage/>} />
           <Route path='*' element={<PageNotFound/>} />
 
 

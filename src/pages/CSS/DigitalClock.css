@@ -1,0 +1,24 @@
+ .digital-clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+/*  .react-clock__face {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .react-clock__hand {
+    background: black;
+  }
+  
+  .react-clock__mark {
+    background: black;
+  }
+  
+  .react-clock__number {
+    color: black;
+  }
+   */
