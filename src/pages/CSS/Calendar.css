@@ -1,0 +1,135 @@
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bottom-container {
+    flex: 1;
+    display: flex;
+  }
+  .bottom-container__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .detail-flex {
+    display: flex;
+   justify-content: space-between;
+    width: 100%;
+  }
+  
+  .cbox.spending-box {
+    width: 40%;
+    background-color: #e6e4e4; 
+    border: 1px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .detail-box {
+    width: 40%;
+    background-color: #faf7f7; 
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .box.transaction-box {
+    width: 80%;
+    background-color: #f2f2f2; 
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .date-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .psv {
+    background-color: #007bff; 
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 5px;
+    height: 30px;
+    width: 80px;
+  
+  }
+  .psv:hover{
+    background-color: #4093eb;
+    color: whitesmoke;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #7d7b7b;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .calendar-cell {
+    height: 40px;
+    position: relative;
+  }
+  
+  .q {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .public-holiday {
+    background-color: #4dd0c1; 
+    color: #fff;
+  }
+  
+  .weekend {
+    color: rgb(250, 4, 4);
+    background-color: #fafbfc; 
+  }
+  
+  .today {
+    border: 2px solid #007bff; 
+    border-radius: 1%;
+  }
+  .holiday {
+    background-color: #ffcccc; /* Change this color as needed */
+  }

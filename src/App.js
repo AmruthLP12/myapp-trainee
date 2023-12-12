@@ -38,6 +38,7 @@ import SimpleCarousel from './pages/SimpleCarousel.js';
 import ProfileForm from './pages/ProfileForm.js';
 import MultipleImagesPage from './pages/MultipleImagesPage.js';
 import SpeechRecognitionComponent from './pages/SpeechRecognitionComponent.js';
+import Calender from './pages/Calender.js';
 
 
 import PageNotFound from './pages/PageNotFound.js';
@@ -104,6 +105,7 @@ function App() {
           <Route path='/ProfileForm' element={<ProfileForm/>} />
           <Route path='/MultipleImagesPage' element={<MultipleImagesPage/>} />
           <Route path='/SpeechRecognitionComponent' element={<SpeechRecognitionComponent/>} />
+          <Route path='/Calender' element={<Calender/>} />
           <Route path='*' element={<PageNotFound/>} />
 
 

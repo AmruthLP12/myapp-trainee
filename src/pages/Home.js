@@ -61,6 +61,7 @@ const Home = () => {
       <br />      <Link to='/ProfileForm'>ProfileForm</Link>
       <br />      <Link to='/MultipleImagesPage'>MultipleImagesPage</Link>
       <br />      <Link to='/SpeechRecognitionComponent'>SpeechRecognitionComponent</Link>
+      <br />      <Link to='/Calender'>Calender</Link>
 
 
 <br /><br />
