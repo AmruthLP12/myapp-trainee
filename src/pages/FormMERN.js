@@ -124,6 +124,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../helper/Helper';
 
 const FormMERN = () => {
   const navigate = useNavigate();
@@ -175,7 +176,7 @@ const FormMERN = () => {
       console.log('Form Data:', formDataToSend);
   
       // Send formData to the backend using axios
-      await axios.post('http://localhost:5001/users', formDataToSend, {
+      await axios.post(`${BASE_URL}/users`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set the content type for file uploads
         },

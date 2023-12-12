@@ -37,6 +37,7 @@ import DigitalClock from './pages/DigitalClock.js';
 import SimpleCarousel from './pages/SimpleCarousel.js';
 import ProfileForm from './pages/ProfileForm.js';
 import MultipleImagesPage from './pages/MultipleImagesPage.js';
+import SpeechRecognitionComponent from './pages/SpeechRecognitionComponent.js';
 
 
 import PageNotFound from './pages/PageNotFound.js';
@@ -102,6 +103,7 @@ function App() {
           <Route path='/SimpleCarousel' element={<SimpleCarousel/>} />
           <Route path='/ProfileForm' element={<ProfileForm/>} />
           <Route path='/MultipleImagesPage' element={<MultipleImagesPage/>} />
+          <Route path='/SpeechRecognitionComponent' element={<SpeechRecognitionComponent/>} />
           <Route path='*' element={<PageNotFound/>} />
 
 

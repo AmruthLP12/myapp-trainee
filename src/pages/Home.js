@@ -60,6 +60,7 @@ const Home = () => {
       <br />      <Link to='/SimpleCarousel'>SimpleCarousel</Link>
       <br />      <Link to='/ProfileForm'>ProfileForm</Link>
       <br />      <Link to='/MultipleImagesPage'>MultipleImagesPage</Link>
+      <br />      <Link to='/SpeechRecognitionComponent'>SpeechRecognitionComponent</Link>
 
 
 <br /><br />

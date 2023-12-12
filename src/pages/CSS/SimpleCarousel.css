@@ -1,38 +1,44 @@
 /* Add your own global styles as needed */
 
 .carousel-slide {
-    position: relative;
-  }
-  
-  .carousel-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff; /* Text color */
-  }
-  
-  .carousel-overlay h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .carousel-overlay button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3498db; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .carousel-overlay button:hover {
-    background-color: #2980b9; /* Hover state background color */
-  }
+  position: relative;
+}
 
-  /* Styles for the custom arrows */
+.carousel-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff; /* Text color */
+}
+
+.carousel-slide img {
+  width: 100%; /* Set the width to 100% for full-width images */
+  height: 400px; /* Set the desired height for the carousel slides */
+  object-fit: cover; /* Preserve aspect ratio and cover the entire container */
+}
+
+.carousel-overlay h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.carousel-overlay button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-overlay button:hover {
+  background-color: #2980b9; /* Hover state background color */
+}
+
+/* Styles for the custom arrows */
 .slick-prev,
 .slick-next {
   font-size: 24px;
@@ -47,4 +53,4 @@
 .slick-next {
   right: 10px;
 }
-  
+

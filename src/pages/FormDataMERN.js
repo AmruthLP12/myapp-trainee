@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../helper/Helper";
+const apiKey = process.env.REACT_APP_API_KEY;
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 
 const FormDataMERN = () => {
   // State variables to manage users, edit mode, edited user, modals, and user deletion
@@ -23,7 +28,7 @@ const FormDataMERN = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/users");
+        const response = await axios.get(`${BASE_URL}/users`);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -133,9 +138,9 @@ const FormDataMERN = () => {
   const handleDeleteConfirm = async () => {
     try {
       // Send a DELETE request to delete the user from the server
-      await axios.delete(`http://localhost:5001/users/${userToDelete._id}`);
+      await axios.delete(`${BASE_URL}/users/${userToDelete._id}`);
       // Fetch the updated user list after deleting
-      const response = await axios.get("http://localhost:5001/users");
+      const response = await axios.get(`${BASE_URL}/users`);
       setUsers(response.data);
       setIsDeleteModalOpen(false);
     } catch (error) {
@@ -146,6 +151,8 @@ const FormDataMERN = () => {
   return (
     <div>
       <h2>User List</h2>
+      <h3>{apiKey}</h3>
+      <h3>{apiUrl}</h3>
       <ul>
         {/* // Inside the map function where you render user data */}
         {users.map((user) => (
@@ -156,7 +163,7 @@ const FormDataMERN = () => {
             <p>Gender: {user.gender}</p>
             {user.profilePicture && (
               <img
-                src={`http://localhost:5001/${user.profilePicture}`}
+                src={`${BASE_URL}/${user.profilePicture}`}
                 alt={`${user.firstName}'s Profile`}
                 style={{ width: "100px", height: "100px" }}
               />

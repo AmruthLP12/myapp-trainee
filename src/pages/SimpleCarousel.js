@@ -44,7 +44,8 @@ const ImageCarousel = () => {
         <div key={index} className="carousel-slide">
           <img src={slide.image} alt={`Slide ${index + 1}`} />
           <div className="carousel-overlay">
-            <h3>{slide.text}</h3>
+            <h3 className='curp'>{slide.text}</h3>
+            
             <button>{slide.buttonText}</button>
           </div>
         </div>
