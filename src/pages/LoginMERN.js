@@ -29,7 +29,7 @@ const LoginMERN = () => {
     try {
       console.log('Form Data:', formData); // Log the form data
       // Send login data to backend
-      const response = await axios.post('http://localhost:5000/login', formData);
+      const response = await axios.post('http://localhost:5005/login', formData);
 
       if (response.data.success) {
         // Successful login

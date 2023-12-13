@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const PatientBill = () => {
   const [patientId, setPatientId] = useState("");
-  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [, setSelectedDoctor] = useState("");
   const [patientData, setPatientData] = useState(null);
   const [error, setError] = useState(null);
 
