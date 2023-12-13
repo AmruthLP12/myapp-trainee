@@ -23,6 +23,7 @@ const YourComponent = () => {
   const [totalPublicHolidays, setTotalPublicHolidays] = useState(0);
   const [publicHolidays, setPublicHolidays] = useState([]);
   const [calendarEvents, setCalendarEvents] = useState([]);
+  const [publicHolidaysData, setPublicHolidaysData] = useState([]);
   const uniquePublicHolidays = new Set(publicHolidays);
 
   useEffect(() => {
@@ -119,37 +120,41 @@ const YourComponent = () => {
     try {
       const apiKey = "ZEo2Bf6SEIDnUxEHpFkSqF13uQBkcO6I"; // Replace with your actual API key
       const response = await fetch(
-        `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=IN&year=${selectedYear}&month=${
-          selectedMonth + 1
-        }`
+        `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=IN&year=${selectedYear}&month=${selectedMonth + 1}`
       );
-
-      console.log(
-        "API URL:",
-        `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=IN&year=${selectedYear}&month=${
-          selectedMonth + 1
-        }`
-      );
-
+  
       // Check if the response status is OK
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
+  
       const data = await response.json();
-
+  
       console.log("Public Holidays:", data.response.holidays);
-
-      // Handle the data as needed (e.g., update state)
-      const uniquePublicHolidays = new Set(
-        data.response.holidays.map((holiday) => holiday.date.iso)
-      );
-
+  
+      const publicHolidaysData = data.response.holidays.map((holiday) => {
+        // Check for different date formats and prioritize ISO format
+        const date = holiday.date.iso || holiday.date.datetime || holiday.date.date;
+        return {
+          date: new Date(date).toISOString().split("T")[0],
+          name: holiday.name,
+        };
+      });
+  
+      // Update state with public holidays data
+      setPublicHolidaysData(publicHolidaysData);
+      console.table(publicHolidaysData);
+  
+      // Create a Set of unique public holidays in ISO format
+      const uniquePublicHolidays = new Set(publicHolidaysData.map((holiday) => holiday.date));
+  
+      // Update state with the unique public holidays
       setPublicHolidays(Array.from(uniquePublicHolidays));
     } catch (error) {
       console.error("Error fetching public holidays:", error);
     }
   };
+  
 
   // ... (existing code)
 
@@ -206,7 +211,7 @@ const YourComponent = () => {
             <b>{i}</b>
             <br />
             {isPublicHoliday
-              ? `Holiday: ${holidayName}`
+              ? `Public Holiday`
               : isSunday
               ? "Sunday"
               : isToday
