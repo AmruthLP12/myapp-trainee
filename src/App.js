@@ -32,6 +32,13 @@ import ImageGalleryPage from './pages/ImageGalleryPage.js';
 import CheckBox from './pages/CheckBox.jsx';
 import DisplayCheckedData from './pages/DisplayCheckedData.js';
 import PatientBill from './pages/PatientBill.js';
+import DigitalClock1 from './pages/DigitalClock1.js';
+import DigitalClock from './pages/DigitalClock.js';
+import SimpleCarousel from './pages/SimpleCarousel.js';
+import ProfileForm from './pages/ProfileForm.js';
+import MultipleImagesPage from './pages/MultipleImagesPage.js';
+import SpeechRecognitionComponent from './pages/SpeechRecognitionComponent.js';
+import Calender from './pages/Calender.js';
 
 
 import PageNotFound from './pages/PageNotFound.js';
@@ -43,6 +50,9 @@ import MailWIthHtml from './pages/MailWIthHtml.js';
 import FormMERN from './pages/FormMERN';
 import LoginMERN from './pages/LoginMERN.js';
 import FormDataMERN from './pages/FormDataMERN.js';
+import EditUser from './pages/EditUser.js';
+import RegisterRole from './pages/RegisterRole.js';
+import LoginRole from './pages/LoginRole.js';
 
 
 function App() {
@@ -82,10 +92,20 @@ function App() {
           <Route path='/FormMERN' element={<FormMERN/>} />
           <Route path='/LoginMERN' element={<LoginMERN/>} />
           <Route path='/FormDataMERN' element={<FormDataMERN/>} />
+          <Route path="/edit-user/:id" element={<EditUser/>} />
           <Route path='/ImageGalleryPage' element={<ImageGalleryPage/>} />
           <Route path='/CheckBox' element={<CheckBox/>} />
           <Route path='/DisplayCheckedData' element={<DisplayCheckedData/>} />
           <Route path='/PatientBill' element={<PatientBill/>} />
+          <Route path='/RegisterRole' element={<RegisterRole/>} />
+          <Route path='/LoginRole' element={<LoginRole/>} />
+          <Route path='/DigitalClock1' element={<DigitalClock1/>} />
+          <Route path='/DigitalClock' element={<DigitalClock/>} />
+          <Route path='/SimpleCarousel' element={<SimpleCarousel/>} />
+          <Route path='/ProfileForm' element={<ProfileForm/>} />
+          <Route path='/MultipleImagesPage' element={<MultipleImagesPage/>} />
+          <Route path='/SpeechRecognitionComponent' element={<SpeechRecognitionComponent/>} />
+          <Route path='/Calender' element={<Calender/>} />
           <Route path='*' element={<PageNotFound/>} />
 
 

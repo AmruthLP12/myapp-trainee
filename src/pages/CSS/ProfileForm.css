@@ -1,0 +1,16 @@
+/* YourFormStyles.css */
+
+.profile-img-container {
+    width: 50px; /* Set the size based on the icon size */
+    height: 50px; /* Set the size based on the icon size */
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
